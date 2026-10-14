@@ -1,0 +1,198 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Falcora Motors</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="encabezado">
+    <a class="logo" href="#inicio">
+        <strong>FALCORA</strong>
+        <span>MOTORS</span>
+    </a>
+
+    <nav>
+        <a href="#inicio">Inicio</a>
+        <a href="#motos">Motocicletas</a>
+        <a href="#beneficios">Ventajas</a>
+    </nav>
+
+   
+<button class="boton-carrito" type="button" onclick="abrirCarrito()">
+    🛒 Carrito
+    <span id="contador">0</span>
+</button>
+
+</header>
+
+<section class="portada" id="inicio">
+    <div>
+        <p class="rojo">POTENCIA · VELOCIDAD · LIBERTAD</p>
+        <h1>FALCORA<br><span>MOTORS</span></h1>
+        <p>Encuentra tu próxima motocicleta para la ciudad, carretera y aventura.</p>
+        <a href="#motos" class="boton">EXPLORAR MOTOCICLETAS</a>
+    </div>
+</section>
+
+<main id="motos">
+    <section class="titulo">
+        <p class="rojo">ENCUENTRA TU ESTILO</p>
+        <h2>Motocicletas destacadas</h2>
+        <p>Elige tu moto, color y accesorios.</p>
+    </section>
+
+    <input id="buscador" type="search"
+           placeholder="Buscar motocicleta o categoría...">
+
+    <div id="productos" class="productos"></div>
+</main>
+
+<section class="beneficios" id="beneficios">
+    <div><h3>Variedad</h3><p>Modelos para distintos estilos.</p></div>
+    <div><h3>Personalización</h3><p>Elige colores y accesorios.</p></div>
+    <div><h3>Simulación segura</h3><p>No se realizan pagos reales.</p></div>
+</section>
+
+<footer>
+    <strong>FALCORA MOTORS</strong>
+    <p>© 2026 Falcora Motors. Todos los derechos reservados.</p>
+    <p>Sitio web de simulación educativa. No se realizan ventas ni pagos reales.</p>
+    <p class="rojo">DOMINA EL VIENTO.</p>
+</footer>
+
+<!-- MODAL DE DETALLES -->
+<div class="modal" id="modalDetalles">
+    <div class="modal-contenido grande">
+        <button class="cerrar" onclick="cerrarDetalles()">×</button>
+        <div id="contenidoDetalles"></div>
+    </div>
+</div>
+
+<!-- MODAL DEL CARRITO -->
+<div class="modal" id="modalCarrito">
+    <div class="modal-contenido">
+        <button class="cerrar" onclick="cerrarCarrito()">×</button>
+        <h2>Tu carrito</h2>
+        <div id="listaCarrito"></div>
+
+        <div class="total">
+            <span>Total:</span>
+            <strong id="totalCarrito">$0 MXN</strong>
+        </div>
+
+        <button class="boton ancho" onclick="finalizarCompra()">
+            Continuar simulación
+        </button>
+        <p class="aviso">No se realizan cobros reales.</p>
+    </div>
+</div>
+
+<!-- MODAL DE PAGO SIMULADO -->
+<div class="modal" id="modalCheckout">
+    <div class="modal-contenido">
+        <button class="cerrar" onclick="cerrarCheckout()">×</button>
+
+        <h2>Finalizar simulación</h2>
+        <p>Selecciona cómo deseas simular el pago.</p>
+
+        <div class="total">
+            <span>Total simulado:</span>
+            <strong id="checkoutTotal">$0 MXN</strong>
+        </div>
+
+        <label for="metodoPago">Método de pago</label>
+        <select id="metodoPago">
+            <option value="tarjeta">Tarjeta</option>
+            <option value="transferencia">Transferencia simulada</option>
+            <option value="digital">Billetera digital simulada</option>
+        </select>
+
+        <div id="opcionesTarjeta">
+            <label for="tipoTarjeta">Tipo de tarjeta</label>
+            <select id="tipoTarjeta">
+                <option value="Crédito">Tarjeta de crédito</option>
+                <option value="Débito">Tarjeta de débito</option>
+                <option value="Prepago">Tarjeta prepagada</option>
+            </select>
+
+            <label for="marcaTarjeta">Marca de tarjeta</label>
+            <select id="marcaTarjeta">
+                <option value="Visa">Visa</option>
+                <option value="Mastercard">Mastercard</option>
+                <option value="American Express">American Express</option>
+                <option value="Otra">Otra</option>
+            </select>
+        </div>
+
+
+        <div id="datosTarjeta">
+            <label for="numeroTarjeta">Número de tarjeta de prueba</label>
+            <input
+                type="text"
+                id="numeroTarjeta"
+                placeholder="4242 4242 4242 4242"
+                maxlength="19"
+                inputmode="numeric"
+                autocomplete="off"
+            >
+
+            <label for="titularTarjeta">Nombre del titular</label>
+            <input
+                type="text"
+                id="titularTarjeta"
+                placeholder="TITULAR DE PRUEBA"
+                maxlength="60"
+                autocomplete="off"
+            >
+
+            <div class="campos-tarjeta">
+                <div>
+                    <label for="vencimientoTarjeta">Vencimiento</label>
+                    <input
+                        type="text"
+                        id="vencimientoTarjeta"
+                        placeholder="MM/AA"
+                        maxlength="5"
+                        inputmode="numeric"
+                        autocomplete="off"
+                    >
+                </div>
+
+                <div>
+                    <label for="cvvTarjeta">CVV de prueba</label>
+                    <input
+                        type="password"
+                        id="cvvTarjeta"
+                        placeholder="123"
+                        maxlength="4"
+                        inputmode="numeric"
+                        autocomplete="off"
+                    >
+                </div>
+            </div>
+
+            <p id="mensajeTarjeta"></p>
+            <p>Simulación educativa. No se procesan pagos reales.</p>
+        </div>
+```
+
+        <p class="aviso">
+            Esta es una demostración educativa. No escribas números de tarjeta
+            ni datos bancarios reales.
+        </p>
+
+        <button class="boton ancho" onclick="confirmarSimulacion()">
+            Confirmar simulación
+        </button>
+
+        <div id="resultadoCheckout" class="resultado oculto"></div>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
